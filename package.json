@@ -1,0 +1,25 @@
+{
+  "name": "empreperu",
+  "version": "1.0.0",
+  "description": "Proyecto para sistema distribuidos",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devi96/EmprePeru.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devi96/EmprePeru/issues"
+  },
+  "homepage": "https://github.com/devi96/EmprePeru#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  }
+}
