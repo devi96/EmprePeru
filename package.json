@@ -17,6 +17,9 @@
     "url": "https://github.com/devi96/EmprePeru/issues"
   },
   "homepage": "https://github.com/devi96/EmprePeru#readme",
+  "engines": {
+    "node": "13.x"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "ejs": "^3.0.1",

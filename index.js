@@ -4,7 +4,12 @@ const app = express();
 const cors = require('cors');
 //const {mongoose}= require('./database');
 //Settings
-app.set('port', 5000);
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 5000;
+}
+app.listen(port);
+
 //Middlewares
 //app.use(cors());
 //app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
