@@ -19,7 +19,8 @@ connection.connect(error => {
 module.exports = connection;
 */
 
-const {pool} =require('pg')
+const Pool =require('pg').Pool
+
 const pool = new Pool({
 	connectionstring: process.env.DATABASE_URL
 	ssl:true
