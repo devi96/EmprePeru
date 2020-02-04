@@ -20,6 +20,8 @@ module.exports = connection;
 */
 const { Pool } = require('pg')
 
+
+console.log("Esta es la connection", process.env.DATABASE_URL )
 const pool = new Pool({
 	connectionstring: process.env.DATABASE_URL
 });
