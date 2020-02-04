@@ -18,14 +18,34 @@ connection.connect(error => {
 
 module.exports = connection;
 */
+/*
 const { Pool } = require('pg')
 
 
 console.log("Esta es la connection", process.env.DATABASE_URL )
 const pool = new Pool({
-	connectionstring: process.env.DATABASE_URL
+	connectionstring: process.env.DATABASE_URL 
 });
 
 pool.connect();
+
+module.exports = pool;
+*/
+
+
+let pg = require('pg');
+if (process.env.DATABASE_URL) {
+  pg.defaults.ssl = true;
+}
+
+// include an OR statement if you switch between a local dev db and 
+// a remote heroku environment
+
+let connString = process.env.DATABASE_URL || 'postgresql://postgres:password@localhost:localpostgresport/yourlocaldbname';
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  connectionString : connString
+});
 
 module.exports = pool;
