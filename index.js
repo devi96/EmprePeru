@@ -2,6 +2,7 @@ const express = require ('express');
 //const stripe = require("stripe")(keySecret);
 const app = express();
 const cors = require('cors');
+const db = require('./model/db.js');
 //const {mongoose}= require('./database');
 //Settings
 let port = process.env.PORT;
@@ -14,7 +15,8 @@ app.listen(port);
 //app.use(cors());
 //app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
 //app.use(morgan('dev'));
-app.use(express.json());
+//app.use(express.json());
+app.use(express.urlencoded())
 
 app.set('views', __dirname +'/view/');
 app.set('view engine','ejs');
@@ -29,6 +31,11 @@ app.use(express.static(__dirname + '/node_modules'));
 //app.use('/api/evento',require('./routes/evento.route'));
 //app.use('/api/ticket',require('./routes/ticket.route'));
 app.use('/',require('./routes/index.route'));
+const usuarios = require('./routes/usuarios.route')(app);
+const perfil =   require('./routes/perfil.route')(app);
+const historias = require('./routes/historias.route')(app);
+const comentarios = require('./routes/comentarios.route')(app);
+const categorias = require('./routes/categorias.route')(app);
 
 
 // Configurar cabeceras y cors
@@ -44,5 +51,5 @@ app.use('/',require('./routes/index.route'));
 
 //Starting the server
 app.listen(app.get('port'), ()=> {
-    console.log('Server on port', app.get('port'));
+    console.log('Server on port', port);
 });
