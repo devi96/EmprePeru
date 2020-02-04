@@ -13,7 +13,7 @@ const Usuario = function(usuario) {
 
 Usuario.create = (newUser, result) => {
   console.log("Este es el nuevo usuario a ser creado",newUser);
-  sql.query("INSERT INTO usuarios SET ?", newUser, (err, res) => {
+  sql.query("INSERT INTO usuarios(idusuarios,nombre,apellidos,password,tipo,email) values($1,$2,$3,$4,$5,$6) ", [newUser.idusuarios,newUser.nombre,newUser.apellidos,newUser.password,newUser.tipo,newUser.email], (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
