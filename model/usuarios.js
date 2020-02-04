@@ -51,9 +51,12 @@ Usuario.getAll = result => {
       result(null, err);
       return;
     }
+    
+    JSON.stringify(res);
 
-    console.log("usuarios: ", res);
-    result(null, res.rows);
+    console.log("usuarios: ", res.rows);
+
+    result(null, res);
   });
 };
 
