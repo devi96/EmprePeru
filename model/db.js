@@ -1,4 +1,4 @@
-const mysql = require("mysql");
+/*const mysql = require("mysql");
 const dbConfig = require("../config/db.config.js");
 
 // Create a connection to the database
@@ -17,3 +17,17 @@ connection.connect(error => {
 });
 
 module.exports = connection;
+*/
+
+const {pool} =require('pg')
+const pool = new Pool({
+	connectionstring: process.env.DATABASE_URL
+	ssl:true
+});
+
+pool.connect(error => {
+  if (error) throw error;
+  console.log("Successfully connected to the database");
+});
+
+module.exports = pool;
