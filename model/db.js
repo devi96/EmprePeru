@@ -18,17 +18,12 @@ connection.connect(error => {
 
 module.exports = connection;
 */
-
-const Pool =require('pg').Pool
+const { Pool } = require('pg')
 
 const pool = new Pool({
 	connectionstring: process.env.DATABASE_URL
-	ssl:true
 });
 
-pool.connect(error => {
-  if (error) throw error;
-  console.log("Successfully connected to the database");
-});
+pool.connect();
 
 module.exports = pool;
