@@ -19,7 +19,6 @@ module.exports = app => {
   // Delete all
   app.delete("/perfil", perfil.deleteAll);
 
-
   //metodos autorizacion
   app.post("/login", auth.login);
   app.get("/log_out", auth.log_out);

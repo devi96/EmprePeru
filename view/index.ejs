@@ -23,6 +23,8 @@
     <link href="css/style_1.css" rel="stylesheet" type="text/css"/>
     <!-- Modernizr JS -->
     <script src="js/modernizr-3.5.0.min.js"></script>
+
+
 </head>
 <body>
 <div class="container-fluid fh5co_header_bg">
@@ -70,9 +72,19 @@
                     Registrarse
                 </button>
                 <%}else{%>
+
                     <button class="btn btn-primary"  onclick="location.href='/log_out'">
-                    Log out
+                     Ver
                     </button>
+
+                    <button class="btn btn-primary"  onclick="">
+                     Publicar
+                    </button>
+                    
+                    <button class="btn btn-danger"  onclick="location.href='/log_out'">
+                     Log out
+                    </button>
+                    <span class="badge badge-success">Conectado</span>
                 <%}%>
             </div>
         </div>
@@ -564,6 +576,7 @@
 <script src="js/jquery.waypoints.min.js"></script>
 <!-- Main -->
 <script src="js/main.js"></script>
+
 
 </body>
 </html>

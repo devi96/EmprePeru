@@ -37,5 +37,9 @@ router.get("/registro",(req,res)=>{
 	res.render("registro");	
 });
 
+router.get("/editor",(req,res)=>{
+	res.render("editor");	
+});
+
 
 module.exports = router;
