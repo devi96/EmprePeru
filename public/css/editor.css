@@ -21,7 +21,7 @@
   color: #fff;
   opacity: 0.8;
   padding: 4px;
-  position: absolute;
+  position: relative;
   text-align: center;
   width: 150px;
 }
@@ -36,4 +36,5 @@ img {
 
 #editor-container {
   height: 800px;
+  width: 900px;
 }
