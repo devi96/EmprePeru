@@ -21,11 +21,13 @@ app.use(session({
 
 app.use(cookieParser());
 app.use(flash());
-app.use(function(req, res, next) {
+
+/*app.use(function(req, res, next) {
   if(req.session.user)
   res.locals.user = req.session.usuario;
   next();
 });
+*/
 
 app.listen(port);
 

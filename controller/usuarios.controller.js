@@ -27,7 +27,7 @@ exports.create = (req, res) => {
 	          err.message || "Some error occurred while creating the Customer."
 	      });
 	    else {
-	    	req.session.usuario = user;
+	    	req.session.user = user;
 	        req.flash("Bienvenido","Bienvenido al sistema");
 	        return res.redirect('/');
 	    	//res.send(data)

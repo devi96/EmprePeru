@@ -4,7 +4,8 @@ const router = express.Router();
 
 router.get("/",(req,res) =>{
 	res.render("index",{
-		 bienvenido: req.flash("Bienvenido")
+		 bienvenido: req.flash("Bienvenido"),
+		 user: req.session.user
 	});
 });
 
