@@ -32,6 +32,9 @@
             <div class="col-12 fh5co_mediya_center mt-1">
                 <div class="col-4 float-left">
                     <i class="fa fa-clock-o"></i> fecha : <div id="actual"></div></a>
+                     <% if ( bienvenido!='' ) { %>
+                      <%- "<div class='flash validation'>" %> <%=bienvenido%> <%- "</div>" %>
+                      <% } %>
                 </div>
                 <div class="col-4 float-right">
                     <div class="float-left mt-2">
@@ -59,12 +62,18 @@
                 <img src="Noticias/ep.png" alt="img" class="fh5co_logo_width"/> Encargada de divulgar historias de peruanos exitosos
             </div>
             <div class="col-12 col-md-9 align-self-center fh5co_mediya_right">
+                <%if (!locals.user) {%>
                 <button class="btn btn-primary"  onclick="location.href='login'">
                     iniciar sesion
                 </button>
                 <button class="btn btn-secondary" onclick="location.href='registro'">
                     Registrarse
                 </button>
+                <%}else{
+                    <button class="btn btn-primary"  onclick="location.href='#'">
+                    Log out
+                    </button>
+                }%>
             </div>
         </div>
     </div>

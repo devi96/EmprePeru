@@ -3,12 +3,30 @@ const express = require ('express');
 const app = express();
 const cors = require('cors');
 const db = require('./model/db.js');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const flash = require('connect-flash');
 //const {mongoose}= require('./database');
 //Settings
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 5000;
 }
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}));
+
+
+app.use(cookieParser());
+app.use(flash());
+app.use(function(req, res, next) {
+  if(req.session.user)
+  res.locals.user = req.session.usuario;
+  next();
+});
+
 app.listen(port);
 
 //Middlewares

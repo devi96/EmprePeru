@@ -26,8 +26,18 @@ exports.create = (req, res) => {
 	        message:
 	          err.message || "Some error occurred while creating the Customer."
 	      });
-	    else res.send(data);
+	    else {
+	    	req.session.usuario = user;
+	        req.flash("Bienvenido","Bienvenido al sistema");
+	        return res.redirect('/');
+	    	//res.send(data)
+	    };
 	  });
+
+
+
+
+
 };
 
 // Retrieve all Customers from the database.
