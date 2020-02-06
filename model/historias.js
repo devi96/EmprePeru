@@ -9,7 +9,7 @@ const Historia = function(historia) {
 
 
 Historia.create = (newHistoria, result) => {
-  sql.query("INSERT INTO historias SET ?", newHistoria, (err, res) => {
+  sql.query("INSERT INTO historias(titulo ,contenido ,fecha ,idcategorias) values($1,$2,$3,$4)", newHistoria.titulo,newHistoria.contenido,newHistoria.fecha,1, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);

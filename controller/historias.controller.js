@@ -3,18 +3,19 @@ const Historia = require("../model/historias.js");
 // Create and Save a new Customer
 exports.create = (req, res) => {
   	   
-  	   console.log("esto llego del request",req);
+  	   console.log("esto llego del request",req.body);
 		// Validate request
 	  if (!req.body) {
 	    res.status(400).send({
 	      message: "Content can not be empty!"
 	    });
 	  }
-
+	  console.log("este es el mensaje",req.body.about.ops[0].insert);
+	  
 	  const historia = new Historia({
-	  	titulo: req.body.titulo,
-	  	contenido: req.body.contenido,
-	  	fecha: req.body.fecha
+	  	titulo: req.body.display_name,
+	  	contenido: req.body.about.ops[0].insert,
+	  	fecha: new Date()
 	  });
 
 	  // Save Customer in the database
