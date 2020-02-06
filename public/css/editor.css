@@ -1,5 +1,5 @@
 #form-container {
-  width: 500px;
+  width: 1000px;
 }
 
 .row {
@@ -35,5 +35,5 @@ img {
 }
 
 #editor-container {
-  height: 130px;
+  height: 800px;
 }
