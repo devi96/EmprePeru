@@ -10,8 +10,8 @@ exports.create = (req, res) => {
 	      message: "Content can not be empty!"
 	    });
 	  }
-	  console.log("este es el mensaje",req.body.about.ops[0].insert);
-	  
+	  console.log("este es el mensaje",req.body.about.ops);
+
 	  const historia = new Historia({
 	  	titulo: req.body.display_name,
 	  	contenido: req.body.about.ops[0].insert,
