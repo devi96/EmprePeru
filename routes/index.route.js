@@ -38,7 +38,7 @@ router.get("/registro",(req,res)=>{
 });
 
 router.get("/editor",(req,res)=>{
-	res.render("editor");	
+	res.render("editor_historias");	
 });
 
 
