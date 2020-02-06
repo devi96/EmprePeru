@@ -38,12 +38,12 @@ Usuario.find_Email_password = (email, password, result) => {
       result(null, res[0]);
       return;
     }
-
+    console.log("El valor de usuario encontrado es:", res)
     // not found Customer with the id
     result({ kind: "not_found" }, null);
 
   });
-}
+};
 
 Usuario.findById = (userId, result) => {
   sql.query(`SELECT * FROM usuarios WHERE idusuarios = ${userId}`, (err, res) => {
