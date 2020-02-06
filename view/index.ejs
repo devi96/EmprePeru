@@ -33,7 +33,7 @@
                 <div class="col-4 float-left">
                     <i class="fa fa-clock-o"></i> fecha : <div id="actual"></div></a>
                      <% if ( bienvenido!='' ) { %>
-                      <%- "<div class='flash validation'>" %> <%=bienvenido%> <%- "</div>" %>
+                      <% "<div class='flash validation'>" %> <%=bienvenido%> <%- "</div>" %>
                       <% } %>
                 </div>
                 <div class="col-4 float-right">
@@ -69,11 +69,11 @@
                 <button class="btn btn-secondary" onclick="location.href='registro'">
                     Registrarse
                 </button>
-                <%}else{
+                <%}else{%>
                     <button class="btn btn-primary"  onclick="location.href='#'">
                     Log out
                     </button>
-                }%>
+                <%}%>
             </div>
         </div>
     </div>
