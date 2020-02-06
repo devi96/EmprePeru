@@ -32,19 +32,24 @@
       </div>
       <div class="col-xs-8">
         <div class="form-group">
-          <label for="display_name">Titulo</label>
+          <label for="display_name">Display name</label>
           <input class="form-control" name="display_name" type="text" value="Wall-E">
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input class="form-control"  name="location" type="text" value="Earth">
         </div>
       </div>
     </div>
     <div class="row form-group">
+      <label for="about">About me</label>
+      <input name="about" type="hidden">
       <div id="editor-container">
-        <p>Escribe tu publicacion</p>
+        <p>A robot who has developed sentience, and is the only robot of his kind shown to be still functioning on Earth.</p>
       </div>
     </div>
     <div class="row">
-      <button class="btn btn-primary" type="submit">Publicar</button>
-      <button class="btn btn-danger" type="submit" onclick="location.href='/'">Cancelar</button>
+      <button class="btn btn-primary" type="submit">Save Profile</button>
     </div>
   </form>
 </div>
