@@ -8,4 +8,4 @@ var options = {
   theme: 'snow'
 };
 
-var editor = new Quill('.editor',options);  // First matching element will be used
+var editor = new Quill('.editor', options);  // First matching element will be used
