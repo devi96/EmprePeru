@@ -1,1 +1,11 @@
-var editor = new Quill('.editor');  // First matching element will be used
+var options = {
+  debug: 'info',
+  modules: {
+    toolbar: '#toolbar'
+  },
+  placeholder: 'Compose an epic...',
+  readOnly: true,
+  theme: 'snow'
+};
+
+var editor = new Quill('.editor',options);  // First matching element will be used
