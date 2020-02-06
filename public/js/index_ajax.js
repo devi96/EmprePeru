@@ -18,6 +18,12 @@ form.onsubmit = function() {
   
   console.log("Submitted", $(form).serialize(), $(form).serializeArray());
   
+
+  $.ajax({
+    method: 'POST',
+    url: "https://serene-temple-34641.herokuapp.com/historia",
+    data: $(form).serializeArray()
+  });
   // No back end to actually submit to!
   alert('Open the console to see the submit data!')
   return false;

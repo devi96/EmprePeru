@@ -2,7 +2,8 @@ const Historia = require("../model/historias.js");
 
 // Create and Save a new Customer
 exports.create = (req, res) => {
-  		
+  	   
+  	   console.log("esto llego del request",req);
 		// Validate request
 	  if (!req.body) {
 	    res.status(400).send({
