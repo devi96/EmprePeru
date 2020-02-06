@@ -1,11 +1,11 @@
-var options = {
-  debug: 'info',
+var quill = new Quill('#editor-container', {
   modules: {
-    toolbar: '#toolbar'
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline'],
+      ['image', 'code-block']
+    ]
   },
   placeholder: 'Compose an epic...',
-  readOnly: true,
-  theme: 'snow'
-};
-
-var editor = new Quill('.editor', options);  // First matching element will be used
+  theme: 'snow'  // or 'bubble'
+});
