@@ -34,7 +34,9 @@ exports.create = (req, res, next) => {
 	        message:
 	          err.message || "Some error occurred while creating the historia."
 	      });
-	    else res.send(data);
+	    else {
+	    res.redirect("/");
+		return;}
 	  });
 };
 
