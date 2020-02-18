@@ -1,21 +1,30 @@
 const Historia = require("../model/historias.js");
 
+
 // Create and Save a new Customer
-exports.create = (req, res) => {
-  	   
+exports.create = (req, res, next) => {
+	   console.log("esto es el file",req.file); 
+  	   console.log("esto llego del request completo",req);
   	   console.log("esto llego del request",req.body);
+  	   var body = JSON.parse(JSON.stringify(req.body));
+  	   console.log("este es el nuevo json",body);
 		// Validate request
 	  if (!req.body) {
 	    res.status(400).send({
 	      message: "Content can not be empty!"
 	    });
 	  }
-	  var mensaje = req.body.about.substring(19).replace('\\n\"}]}',"");
+
+
+	  console.log("valor de body.user_id",body.user_id);
+	  console.log("otro valor",body["user_id"]);
 
 	  const historia = new Historia({
-	  	titulo: req.body.display_name,
-	  	contenido: mensaje,
-	  	fecha: new Date()
+	  	idusuarios: body.user_id,
+	  	idcategorias: body.categoria,
+	  	titulo: body.titulo,
+	  	contenido: body.contenido,
+	  	image: req.file.path
 	  });
 
 	  // Save Customer in the database
@@ -30,6 +39,17 @@ exports.create = (req, res) => {
 };
 
 // Retrieve all Customers from the database.
+exports.find_Category = (req,res) => {
+ Historia.getCategory(req.body.idcategoria, (err,data) =>{
+ 	if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving historias."
+      });
+    else res.send(data);
+ });
+};
+
 exports.findAll = (req, res) => {
   Historia.getAll((err, data) => {
     if (err)
@@ -54,7 +74,14 @@ exports.findOne = (req, res) => {
           message: "Error retrieving Customer with id " + req.params.historiaId
         });
       }
-    } else res.send(data);
+    } else {	
+	    		console.log("QUIERO VER LA DATA DE TEC", data)
+	    		res.render("historiaSingle",{
+	    		bienvenido: req.flash("Bienvenido"),
+		 		user: req.session.user,
+				historia: data
+				});
+			}
   });
 };
 

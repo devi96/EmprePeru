@@ -1,29 +1,34 @@
-var quill = new Quill('#editor-container', {
-  modules: {
-    toolbar: [
-      ['bold', 'italic'],
-      ['link', 'blockquote', 'code-block', 'image'],
-      [{ list: 'ordered' }, { list: 'bullet' }]
-    ]
-  },
-  placeholder: 'Compose an epic...',
-  theme: 'snow'
-});
 
-var form = document.querySelector('form');
-form.onsubmit = function() {
-  // Populate hidden form on submit
-  var about = document.querySelector('input[name=about]');
-  about.value = JSON.stringify(quill.getContents());
-  
-  console.log("Submitted", $(form).serialize(), $(form).serializeArray());
-  
+ $(document).ready(function() { 
+            $("#historia_id").click(function(event) {
+              event.preventDefault();
+              
+              var form = $("#myForm")[0];
 
-  $.ajax({
-    method: 'POST',
-    url: "https://serene-temple-34641.herokuapp.com/historia",
-    data: $(form).serializeArray()
+              var data = new FormData(form);
+               
+                // disabled the submit button
+        $("#historia_id").prop("disabled", true);
+ 
+        $.ajax({
+            type: "POST",
+            enctype: 'multipart/form-data',
+            url: "/historia",
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 800000,
+            success: function (data) {
+                console.log("SUCCESS : ", data);
+                $("#historia_id").prop("disabled", false);
+ 
+            },
+            error: function (e) {
+                console.log("ERROR : ", e);
+                $("#historia_id").prop("disabled", false);
+ 
+            }
+        });    
+    });
   });
-  // No back end to actually submit to!
-  return false;
-};

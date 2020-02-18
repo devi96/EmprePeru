@@ -35,13 +35,14 @@ app.listen(port);
 //app.use(cors());
 //app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
 //app.use(morgan('dev'));
-app.use(express.json());
-app.use(express.urlencoded())
+//app.use(express.json());
+app.use(express.urlencoded());
 
 app.set('views', __dirname +'/view/');
 app.set('view engine','ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/node_modules'));
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 //session
 //app.use(session({secret: "Shh, its a secret!"}));
@@ -50,12 +51,17 @@ app.use(express.static(__dirname + '/node_modules'));
 //app.use('/api/usuario',require('./routes/usuario.route'));
 //app.use('/api/evento',require('./routes/evento.route'));
 //app.use('/api/ticket',require('./routes/ticket.route'));
-app.use('/',require('./routes/index.route'));
+
+
+
 const usuarios = require('./routes/usuarios.route')(app);
 const perfil =   require('./routes/perfil.route')(app);
 const historias = require('./routes/historias.route')(app);
 const comentarios = require('./routes/comentarios.route')(app);
 const categorias = require('./routes/categorias.route')(app);
+
+
+app.use('/',require('./routes/index.route'));
 
 
 // Configurar cabeceras y cors
