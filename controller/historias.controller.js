@@ -2,7 +2,7 @@ const Historia = require("../model/historias.js");
 
 
 // Create and Save a new Customer
-exports.create = (req, res, next) => {
+exports.create = (req, res) => {
 	   console.log("esto es el file",req.file); 
   	   console.log("esto llego del request completo",req);
   	   console.log("esto llego del request",req.body);
