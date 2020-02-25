@@ -35,12 +35,8 @@ exports.create = (req, res) => {
 	          err.message || "Some error occurred while creating the historia."
 	      });
 	    else {
-	   		
-	   	 res.render("index",{
-		 bienvenido: req.flash("Bienvenido"),
-		 user: req.session.user,
-		 mensaje: req.flash("message")
-		 });
+	   		console.log("llego aqui y esta creando la historia espera");
+	   	 	res.redirect("/");
 
 
 		return;}
