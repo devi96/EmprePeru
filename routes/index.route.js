@@ -83,7 +83,7 @@ router.post("/enviar_mensaje",(req,res)=>{
 	};
 	sgMail.send(msg);
 
-	res.redirect("/");
+	res.send("exito en el envio del mensaje");
 });
 
 router.get("/:historiaId",(req,res)=>{

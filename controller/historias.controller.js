@@ -36,9 +36,7 @@ exports.create = (req, res) => {
 	      });
 	    else {
 	   		console.log("llego aqui y esta creando la historia espera");
-	   	 	res.redirect("/");
-
-
+	   	 	res.end("acabo");
 		return;}
 	  });
 };

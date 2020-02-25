@@ -340,7 +340,7 @@
             type: 'POST',  // http method
             data: { correo: mensaje_correo, contenido: mensaje_contenido },  // data to submit
             success: function (data, status, xhr) {
-                $('p').append('status: ' + status + ', data: ' + data);
+                $(location).attr('href', 'https://serene-temple-34641.herokuapp.com/');
             },
             error: function (jqXhr, textStatus, errorMessage) {
                     $('p').append('Error' + errorMessage);

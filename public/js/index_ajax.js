@@ -22,12 +22,12 @@
             success: function (data) {
                 console.log("SUCCESS : ", data);
                 $("#historia_id").prop("disabled", false);
- 
+                $(location).attr('href', 'https://serene-temple-34641.herokuapp.com/');
             },
             error: function (e) {
                 console.log("ERROR : ", e);
                 $("#historia_id").prop("disabled", false);
- 
+                
             }
         });    
     });
