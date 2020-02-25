@@ -35,7 +35,14 @@ exports.create = (req, res) => {
 	          err.message || "Some error occurred while creating the historia."
 	      });
 	    else {
-	    res.redirect("/");
+	   		
+	   	 res.render("index",{
+		 bienvenido: req.flash("Bienvenido"),
+		 user: req.session.user,
+		 mensaje: req.flash("message")
+		 });
+
+
 		return;}
 	  });
 };

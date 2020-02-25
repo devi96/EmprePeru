@@ -1,6 +1,7 @@
 const express = require('express');
 //const mongoose = require('mongoose');
 const sgMail = require('@sendgrid/mail');
+
 const router = express.Router();
 const Historia = require("../model/historias.js");
 const Usuario = require("../model/usuarios.js");
@@ -82,7 +83,11 @@ router.post("/enviar_mensaje",(req,res)=>{
 	};
 	sgMail.send(msg);
 
-	res.render("index");
+	res.render("index",{
+		 bienvenido: req.flash("Bienvenido"),
+		 user: req.session.user,
+		 mensaje: req.flash("message")
+	});
 });
 
 router.get("/:historiaId",(req,res)=>{
