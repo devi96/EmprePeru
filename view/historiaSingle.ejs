@@ -103,7 +103,7 @@
         </div>
     </div>
 
-  
+    
     <!--div id="fh5co-title-box" style="background-image: url('<%=historia.image.replace(/\\\\/g, '//')%>'); background-position: 50% 90.5px;" data-stellar-background-ratio="0.5"-->
     <img id="fh5co-title-box" class="historia_image" src='<%=historia.image %>'/>
     <div class="overlay"></div>
@@ -121,7 +121,12 @@
                 <p>
                     <%=historia.contenido%>
                 </p>
+
+
+                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="<%=email%>">Mensaje</button>
+                
             </div>
+
             <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Categorias</div>
@@ -139,6 +144,62 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Enviar mensaje</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Correo:</label>
+                            <input type="text" class="form-control" id="recipient-name" name="correo" readonly>
+                          </div>
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">Mensaje:</label>
+                            <textarea class="form-control" id="message-text" name="contenido_correo"></textarea>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button id="enviar_mensaje" type="button" class="btn btn-primary">Enviar mensaje</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container-fluid pb-4 pt-5">
     <div class="container animate-box">
         <div>
@@ -236,10 +297,7 @@
 <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
 </div>
-<script>
-    var f = new Date();
-    document.getElementById("actual").innerHTML  = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-    </script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 
@@ -256,6 +314,42 @@
 
 <script src="js/main.js"></script>
 <script>if (!navigator.userAgent.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile/i)){$(window).stellar();}</script>
+<script>
+    var f = new Date();
+    document.getElementById("actual").innerHTML  = (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
 
+
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this);
+      modal.find('.modal-title').text('New message to ' + recipient);
+      console.log(recipient);
+      modal.find('.modal-body input').val(recipient);
+    })
+
+    $('#enviar_mensaje').click(function(event){
+            var mensaje_correo= $("#recipient-name").val();
+            var mensaje_contenido= $("#message-text").val();
+            console.log("valor de mensaje",mensaje_correo);
+            console.log("valor de mensaje",mensaje_contenido);
+        $.ajax('/enviar_mensaje', {
+            type: 'POST',  // http method
+            data: { correo: mensaje_correo, contenido: mensaje_contenido },  // data to submit
+            success: function (data, status, xhr) {
+                $('p').append('status: ' + status + ', data: ' + data);
+            },
+            error: function (jqXhr, textStatus, errorMessage) {
+                    $('p').append('Error' + errorMessage);
+            }
+        });
+
+
+    });
+
+</script>
 </body>
 </html>

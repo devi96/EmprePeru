@@ -47,19 +47,20 @@ Usuario.find_Email_password = (email, password, result) => {
 };
 
 Usuario.findById = (userId, result) => {
-  sql.query(`SELECT * FROM usuarios WHERE idusuarios = ${userId}`, (err, res) => {
-    if (err) {
+  sql.query("SELECT * FROM usuarios WHERE idusuarios = $1",[userId], (err, res) => {
+     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
 
-    if (res.length) {
-      console.log("found customer: ", res[0]);
-      result(null, res[0]);
+    if (res.rows.length) {
+      console.log("found usuario: ", res.rows);
+      result(null, res.rows);
       return;
     }
 
+    console.log("El valor de usuario encontrado es:", res.rows)
     // not found Customer with the id
     result({ kind: "not_found" }, null);
   });
