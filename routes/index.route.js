@@ -78,8 +78,8 @@ router.post("/enviar_mensaje",(req,res)=>{
 	  to: req.body.correo,
 	  from: 'usuario@example.com',
 	  subject: 'Respuesta a tu historia de exito',
-	  text: req.body.contenido,
-	  html: '<strong>Gracias por usar Empreperu</strong>',
+	  text: req.body.contenido_email,
+	  html: '<strong>' + req.body.contenido_email + '</strong>',
 	};
 	sgMail.send(msg);
 

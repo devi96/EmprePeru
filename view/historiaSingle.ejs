@@ -338,7 +338,7 @@
             console.log("valor de mensaje",mensaje_contenido);
         $.ajax('/enviar_mensaje', {
             type: 'POST',  // http method
-            data: { correo: mensaje_correo, contenido: mensaje_contenido },  // data to submit
+            data: { correo: mensaje_correo, contenido_email: mensaje_contenido },  // data to submit
             success: function (data, status, xhr) {
                 $(location).attr('href', 'https://serene-temple-34641.herokuapp.com/');
             },
